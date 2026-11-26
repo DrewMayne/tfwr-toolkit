@@ -9,6 +9,7 @@ Written for Windows and the Steam version of the game. Not affiliated with the g
 
 | your question | the tool | needs |
 |---|---|---|
+| **What does each line of my code cost?** | [kit/TICK_COSTS.md](kit/TICK_COSTS.md): the price list, measured in the game | nothing: a page to read |
 | **Where does my time go?** Actions or thinking? | `timed()` in [kit/toolkit.py](kit/README.md) | nothing: plain game code |
 | **Did that help, or was I lucky?** | `bench()` in [kit/toolkit.py](kit/README.md): the same seeds, two versions | nothing: plain game code |
 | **How does my farm compare?** | [kit/rungs.py](kit/README.md): your file, fixed settings, a number to beat | nothing: plain game code |
@@ -29,6 +30,7 @@ Jupyter; you write the farms in the game, and the kit measures them.
 |---|---|---|
 | **toolkit.py** | where does my time go (`timed`: seconds, counted actions, thinking ticks); did that help (`bench`: same seeds, two versions). Includes the counted `Move` / `Till` / `Plant` / `Harvest` that `timed` needs | [kit/toolkit.py](kit/toolkit.py), docs in [kit/README.md](kit/README.md) |
 | **rungs.py** | how does my farm compare: give it your file name; it reports the mean game time over seeds 1-5 (pumpkins, 6x6) or seed 1 (sunflowers, 8x8, 8 drones), every unlock, 100,000 carrots, and the number to beat: **15.0 s** / **14.92 s at 406.8 power** | [kit/rungs.py](kit/rungs.py) |
+| **TICK_COSTS.md** | what does each line cost: actions 200, looks 1, and the price of operators, lists, calls and imports, measured in the game; how to measure a line yourself | [kit/TICK_COSTS.md](kit/TICK_COSTS.md) |
 | **toolkit_fast.py** (needs the mod) | did that help, the fast way: `bench_fast` (the same line as `bench`, all seeds in one `simulate_many` call) and `verdict` (one sentence from `compare`: which file is faster, by how much, +- what, over how many pairs, or "no difference found") | [kit-fast/toolkit_fast.py](kit-fast/toolkit_fast.py), docs in [kit-fast/README.md](kit-fast/README.md) |
 | **rungs_fast.py** (needs the mod) | how does my farm compare, the fast way: `rungs.py` with `simulate_many`; the same output and the same numbers to beat (**15.0 s** / **14.92 s at 406.8 power**) | [kit-fast/rungs_fast.py](kit-fast/rungs_fast.py) |
 | **Faster Simulations** (mod) | how do I test many seeds quickly: `simulate_many` (many seeds in one call), `compare` (a same-seed A / B verdict: which file is faster, and how sure), `leaderboard_simulate` (a leaderboard's start state, nothing submitted). About **3.8x** faster than `simulate()` in a loop (4.9 s against 18.6 s per full-game run, quiet machine); times identical to the game's `simulate()`; refuses to run inside a leaderboard run | [faster-simulations/](faster-simulations/README.md) |

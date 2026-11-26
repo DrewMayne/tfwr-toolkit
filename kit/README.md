@@ -49,3 +49,5 @@ Then use `bench` to test each change you make against your previous version.
 
 Testing many seeds is slow with `simulate()` in a loop: [kit-fast](../kit-fast/README.md) asks the same questions
 through the [Faster Simulations](../faster-simulations/README.md) mod, all seeds in one call.
+
+What each line of your code costs, measured in the game: [TICK_COSTS.md](TICK_COSTS.md).
