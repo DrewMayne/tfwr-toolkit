@@ -17,8 +17,9 @@ Written for Windows and the Steam version of the game. Not affiliated with the g
 Tonight, in 10 minutes: copy [kit/](kit/README.md) into a save, wrap one phase of your farm in `timed()`,
 and run your farm through `rungs.py`. Then change one thing and `bench` it.
 
-Coming to this repository: the worksheet from the talk (its questions, with space for your own farms and
-your own working).
+The talk comes as a **worksheet**: [notebook/FromBeginnerToBoard.ipynb](notebook/FromBeginnerToBoard.ipynb),
+the talk's questions with space for your own farms and your own working. Read it on GitHub or open it in
+Jupyter; you write the farms in the game, and the kit measures them.
 
 ## Tool list
 
@@ -27,6 +28,7 @@ your own working).
 | **toolkit.py** | where does my time go (`timed`: seconds, counted actions, thinking ticks); did that help (`bench`: same seeds, two versions). Includes the counted `Move` / `Till` / `Plant` / `Harvest` that `timed` needs | [kit/toolkit.py](kit/toolkit.py), docs in [kit/README.md](kit/README.md) |
 | **rungs.py** | how does my farm compare: give it your file name; it reports the mean game time over seeds 1-5 (pumpkins, 6x6) or seed 1 (sunflowers, 8x8, 8 drones), every unlock, 100,000 carrots, and the number to beat: **15.0 s** / **14.92 s at 406.8 power** | [kit/rungs.py](kit/rungs.py) |
 | **Faster Simulations** (mod) | how do I test many seeds quickly: `simulate_many` (many seeds in one call), `compare` (a same-seed A / B verdict: which file is faster, and how sure), `leaderboard_simulate` (a leaderboard's start state, nothing submitted). About **3.8x** faster than `simulate()` in a loop (4.9 s against 18.6 s per full-game run, quiet machine); times identical to the game's `simulate()`; refuses to run inside a leaderboard run | [faster-simulations/](faster-simulations/README.md) |
+| **The worksheet** | the talk "From Beginner to Board": each piece asks a question, names the code window to write in the game and the settings to use, and leaves room for your prediction and your result | [notebook/FromBeginnerToBoard.ipynb](notebook/FromBeginnerToBoard.ipynb), notes in [notebook/README.md](notebook/README.md) |
 | *Not ours:* **The Farmer Was Replaced** | the game (Steam) | your Steam library |
 | *Not ours:* **BepInEx 5.4.23.4, Windows x64** | the mod loader the mod runs in. The game is a 64-bit Unity **Mono** game, so it needs **BepInEx 5, x64**: the file `BepInEx_win_x64_5.4.23.4.zip`. Not x86, not BepInEx 6, not an IL2CPP build | https://github.com/BepInEx/BepInEx/releases/tag/v5.4.23.4 |
 | *Not ours:* **HarmonyX** | the patching library inside BepInEx 5 (`0Harmony.dll`); comes with BepInEx | https://github.com/BepInEx/HarmonyX |
@@ -128,7 +130,7 @@ then install `BepInEx_win_x64_5.4.23.4.zip` again.
 - **Faster Simulations**: see [faster-simulations/LICENSE](faster-simulations/LICENSE) and the "Licence and
   game code" section of its README: parts of it are adapted from the game's own code and remain the
   property of the game's developer.
-- **Talk materials** (the worksheet, when it is added): CC BY 4.0, [LICENSE-talk.md](LICENSE-talk.md).
+- **Talk materials** (the worksheet in `notebook/`): CC BY 4.0, [LICENSE-talk.md](LICENSE-talk.md); its code cells: MIT.
 - Copyright holder: Andrew Mayne.
 
 Third-party software this repository uses but does not include:
