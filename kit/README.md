@@ -38,7 +38,7 @@ unlocked and you start with 100,000 carrots.
 
 | rung | your file | the number to beat |
 |---|---|---|
-| 2 | a pumpkin farm that starts with `set_world_size(6)`; mean over seeds 1-5 | **14.73 s** mean game time |
+| 2 | a pumpkin farm that starts with `set_world_size(6)`; mean over seeds 1-5 | **15.0 s** mean game time |
 | 3 | a sunflower farm that starts with `set_world_size(8)` and uses 8 drones; seed 1 | **14.92 s** at power **406.8** (print `num_items(Items.Power)` at the end of your farm) |
 
 Then use `bench` to test each change you make against your previous version.

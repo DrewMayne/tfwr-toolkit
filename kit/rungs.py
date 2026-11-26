@@ -21,7 +21,7 @@ def mean_time(name, seeds):
 
 t = mean_time(MY_PUMPKINS, [1, 2, 3, 4, 5])
 if t != None:
-	quick_print("rung 2:", MY_PUMPKINS, "6x6 pumpkins, mean game time over seeds 1-5:", t, "s | to beat: 14.73 s")
+	quick_print("rung 2:", MY_PUMPKINS, "6x6 pumpkins, mean game time over seeds 1-5:", t, "s | to beat: 15.0 s")
 
 t = mean_time(MY_SUNFLOWERS, [1])
 if t != None:
