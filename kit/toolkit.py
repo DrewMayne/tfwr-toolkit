@@ -3,6 +3,9 @@
 
 # Counted actions: use these instead of move / till / plant / harvest, so timed() can split
 # action ticks (200 each) from thinking ticks.
+# The counting costs ticks too: each counted action adds COUNT_TICKS over the bare builtin, and timed() adds TIMED_TICKS (calling f).
+COUNT_TICKS = 1
+TIMED_TICKS = 1
 actions = 0
 def Move(d):
 	global actions
@@ -30,7 +33,7 @@ def timed(name, f, watch):
 	k = get_tick_count()
 	f()
 	ticks = get_tick_count() - k
-	quick_print(name, get_time() - t, "s |", actions, "actions |", ticks - actions * 200, "thinking ticks")
+	quick_print(name, get_time() - t, "s |", actions, "actions |", ticks - actions * (200 + COUNT_TICKS) - TIMED_TICKS, "thinking ticks")
 	for item in watch:
 		quick_print("   ", item, num_items(item))
 	return actions

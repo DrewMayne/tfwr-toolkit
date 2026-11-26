@@ -23,8 +23,12 @@ start the game. **Back up that save first.** Start a farm with `from toolkit imp
 | `timed(name, f, watch)` | runs `f()` and prints the seconds, the counted actions, the thinking ticks and the stock of each item in `watch`; returns the number of actions | `acts = timed("planting", plant_all, [Items.Pumpkin])` |
 | `bench(file_a, file_b, seeds, items)` | runs two whole-run files with `simulate()` on the same seeds, starting with `items`, and prints the mean and worst difference (B - A) and how often B won. **Run it as your main program**: `simulate()` inside a simulation returns `None` | `bench("farm_a", "farm_b", [1, 2, 3, 4, 5], {Items.Carrot: 100000})` |
 
-Tested in the game (a test copy, 2026-11-23): `timed()` split checked (10 moves = 10 actions, 13 thinking
-ticks); `bench` needs `items` (with `{}` a pumpkin or sunflower farm cannot plant: planting costs carrots).
+Tested in the game (a test copy, 2026-11-26): `timed()` reports the farm's own thinking ticks: it subtracts what the
+counting itself costs (`COUNT_TICKS`, 1 tick per counted action, and `TIMED_TICKS`, the 1 tick of calling `f`), so `f`'s own
+ticks are what's left: 10 wrapped moves report 2 thinking ticks, the same as 10 bare `move()` calls in a loop,
+and an `f` whose body is only `pass` reports 1 (the `pass` itself costs a tick). The
+measured farm still runs 1 tick per counted action slower for being counted; that can't be removed.
+`bench` needs `items` (with `{}` a pumpkin or sunflower farm cannot plant: planting costs carrots).
 
 Know this: `get_time()`, `get_tick_count()` and `quick_print()` are free only in a file with no
 `from X import *`. `toolkit.py` has none, so `timed()` is accurate, but a farm that star-imports the
@@ -43,5 +47,5 @@ unlocked and you start with 100,000 carrots.
 
 Then use `bench` to test each change you make against your previous version.
 
-Testing many seeds is slow with `simulate()` in a loop: the [Faster Simulations](../faster-simulations/README.md)
-mod runs them in one call and tells you whether a change really helped.
+Testing many seeds is slow with `simulate()` in a loop: [kit-fast](../kit-fast/README.md) asks the same questions
+through the [Faster Simulations](../faster-simulations/README.md) mod, all seeds in one call.
